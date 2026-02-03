@@ -8,7 +8,7 @@
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
-            background-color: #ffebee;
+            background-color: #ffebee; /* Light pink background */
             margin: 0;
             padding: 0;
             overflow: hidden;
@@ -32,39 +32,39 @@
             padding: 20px 40px;
             margin: 20px;
             border: none;
-            background-color: #f48fb1;
             color: white;
-            border-radius: 10px;
+            border-radius: 20px;
             cursor: pointer;
             transition: 0.3s ease;
             position: relative;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .button:hover {
-            background-color: #f06292;
+        .yes-button {
+            background-color: #f48fb1; /* Soft pink for YES */
+        }
+
+        .yes-button:hover {
+            background-color: #f06292; /* Darker pink on hover */
         }
 
         .no-button {
-            position: absolute;
-            background-color: #fff176;  /* Yellow for more attention */
-            color: #f44336;
-            border-radius: 20px;
+            background-color: #c8e6c9; /* Light mint green */
+            color: #388e3c; /* Darker green text */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: glow 1s infinite alternate; /* Glowing effect */
+            animation: pulse 1s infinite alternate; /* Soft pulse effect */
         }
 
-        @keyframes glow {
+        /* Pulsing effect for NO button */
+        @keyframes pulse {
             0% {
-                box-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b;
+                transform: scale(1);
+                box-shadow: 0 0 8px #388e3c, 0 0 15px #388e3c;
             }
             100% {
-                box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+                transform: scale(1.1);
+                box-shadow: 0 0 12px #388e3c, 0 0 20px #388e3c;
             }
-        }
-
-        .yes-button {
-            position: relative;
         }
 
         .gif-container {
@@ -72,8 +72,10 @@
             margin-top: 20px;
         }
 
-        .gif-container img {
-            max-width: 80%;
+        .celebration-img {
+            display: none;
+            max-width: 60%;
+            margin-top: 20px;
             border-radius: 10px;
         }
     </style>
@@ -85,18 +87,18 @@
         <button class="button yes-button" onclick="acceptValentine()">YES</button>
         <button class="button no-button" id="noButton" onmouseover="moveNoButton()">NO</button>
 
-        <div class="gif-container" id="gifContainer">
-            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Silly Dance GIF">
-        </div>
+        <!-- Celebration image to show after YES click -->
+        <img src="https://www.pngkit.com/png/full/7-75947_love-heart-png-pic-love-hearts-clipart-png.png" class="celebration-img" id="celebrationImage" alt="Celebration Heart">
     </div>
 
     <script>
         function acceptValentine() {
-            // Hide the buttons and show the silly GIF
+            // Hide the buttons
             document.querySelector('.container').style.display = 'none';
             
-            const gifContainer = document.getElementById('gifContainer');
-            gifContainer.style.display = 'block';
+            // Show the celebration image
+            const celebrationImage = document.getElementById('celebrationImage');
+            celebrationImage.style.display = 'block';
         }
 
         function moveNoButton() {
