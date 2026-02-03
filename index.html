@@ -47,6 +47,20 @@
 
         .no-button {
             position: absolute;
+            background-color: #fff176;  /* Yellow for more attention */
+            color: #f44336;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: glow 1s infinite alternate; /* Glowing effect */
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b;
+            }
+            100% {
+                box-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+            }
         }
 
         .yes-button {
@@ -72,16 +86,15 @@
         <button class="button no-button" id="noButton" onmouseover="moveNoButton()">NO</button>
 
         <div class="gif-container" id="gifContainer">
-            <img src="https://media.giphy.com/media/26FfZ9m7gHX1ZNO5S/giphy.gif" alt="Silly Dance GIF">
+            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Silly Dance GIF">
         </div>
     </div>
 
     <script>
         function acceptValentine() {
-            // Hide the buttons
+            // Hide the buttons and show the silly GIF
             document.querySelector('.container').style.display = 'none';
             
-            // Show the silly GIF
             const gifContainer = document.getElementById('gifContainer');
             gifContainer.style.display = 'block';
         }
