@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine?</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,6 +12,8 @@
             background-color: #fff0f5;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .container {
@@ -22,61 +25,121 @@
         h1 {
             font-size: 3rem;
             color: #e91e63;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .button-wrapper {
+            position: relative;
+            display: inline-block;
         }
 
         .button {
             font-size: 1.5rem;
             padding: 20px 40px;
-            margin: 20px;
             border: none;
-            background-color: #e91e63;
             color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.3s ease;
-            position: relative;
         }
 
-        .button:hover {
+        /* YES button */
+        .yes-button {
+            background-color: #e91e63;
+            position: relative;
+            z-index: 1;
+        }
+
+        .yes-button:hover {
             background-color: #d81b60;
         }
 
+        /* NO button */
         .no-button {
-            position: absolute;
+            background-color: #ff1744;
+            font-weight: 900;
+            font-size: 1.8rem;
+            transform: rotate(-5deg);
+            z-index: 3;
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.8);
+            animation: pulse 1.4s infinite;
+
+            /* IMPORTANT */
+            position: fixed;
+            transition: left 0.2s ease, top 0.2s ease, transform 0.2s ease;
         }
 
-        .yes-button {
-            position: relative;
+        .no-button:hover {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1) rotate(-5deg);
+                box-shadow: 0 0 15px rgba(255, 23, 68, 0.6);
+            }
+            50% {
+                transform: scale(1.1) rotate(-5deg);
+                box-shadow: 0 0 30px rgba(255, 23, 68, 1);
+            }
+            100% {
+                transform: scale(1) rotate(-5deg);
+                box-shadow: 0 0 15px rgba(255, 23, 68, 0.6);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <h1>Will you be my Valentine?</h1>
-        <button class="button yes-button" onclick="acceptValentine()">YES</button>
-        <button class="button no-button" id="noButton" onmouseover="moveNoButton()">NO</button>
+
+        <div class="button-wrapper">
+            <button class="button yes-button" onclick="acceptValentine()">
+                YES
+            </button>
+
+            <button class="button no-button" id="noButton" onmouseover="moveNoButton()">
+                NO
+            </button>
+        </div>
     </div>
 
     <script>
+        const padding = 20;
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const noButton = document.getElementById("noButton");
+
+            // Place NO exactly where it visually appears
+            const rect = noButton.getBoundingClientRect();
+            noButton.style.left = rect.left + "px";
+            noButton.style.top = rect.top + "px";
+        });
+
         function acceptValentine() {
-            window.location.href = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHNlNm84Z2o2dDU4dnV5cXltaHI5MWowYzRzcWJuOHowYTZzM2xmZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KD1D49tK4Hvl6E5q1T/giphy.gif";
+            window.location.href =
+                "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHNlNm84Z2o2dDU4dnV5cXltaHI5MWowYzRzcWJuOHowYTZzM2xmZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KD1D49tK4Hvl6E5q1T/giphy.gif";
         }
 
         function moveNoButton() {
-            // Get the button and the window dimensions
-            const noButton = document.getElementById('noButton');
-            const windowWidth = window.innerWidth;
-            const windowHeight = window.innerHeight;
+            const noButton = document.getElementById("noButton");
 
-            // Generate random position for "NO" button within window boundaries
-            const randomX = Math.floor(Math.random() * (windowWidth - noButton.offsetWidth));
-            const randomY = Math.floor(Math.random() * (windowHeight - noButton.offsetHeight));
+            const maxX = window.innerWidth - noButton.offsetWidth - padding;
+            const maxY = window.innerHeight - noButton.offsetHeight - padding;
 
-            // Apply the new position to the button
-            noButton.style.left = randomX + 'px';
-            noButton.style.top = randomY + 'px';
+            const randomX = Math.max(
+                padding,
+                Math.floor(Math.random() * maxX)
+            );
+
+            const randomY = Math.max(
+                padding,
+                Math.floor(Math.random() * maxY)
+            );
+
+            noButton.style.left = randomX + "px";
+            noButton.style.top = randomY + "px";
         }
     </script>
 
