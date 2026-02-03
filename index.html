@@ -6,12 +6,11 @@
     <title>Be My Valentine?</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #ffebee; /* Light pink background */
+            background-color: #fff0f5;
             margin: 0;
             padding: 0;
-            overflow: hidden;
         }
 
         .container {
@@ -24,7 +23,6 @@
             font-size: 3rem;
             color: #e91e63;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .button {
@@ -32,51 +30,24 @@
             padding: 20px 40px;
             margin: 20px;
             border: none;
+            background-color: #e91e63;
             color: white;
-            border-radius: 20px;
+            border-radius: 10px;
             cursor: pointer;
             transition: 0.3s ease;
             position: relative;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .yes-button {
-            background-color: #f48fb1; /* Soft pink for YES */
-        }
-
-        .yes-button:hover {
-            background-color: #f06292; /* Darker pink on hover */
+        .button:hover {
+            background-color: #d81b60;
         }
 
         .no-button {
-            background-color: #c8e6c9; /* Light mint green */
-            color: #388e3c; /* Darker green text */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: pulse 1s infinite alternate; /* Soft pulse effect */
+            position: absolute;
         }
 
-        /* Pulsing effect for NO button */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 8px #388e3c, 0 0 15px #388e3c;
-            }
-            100% {
-                transform: scale(1.1);
-                box-shadow: 0 0 12px #388e3c, 0 0 20px #388e3c;
-            }
-        }
-
-        .gif-container {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .celebration-img {
-            display: none;
-            max-width: 60%;
-            margin-top: 20px;
-            border-radius: 10px;
+        .yes-button {
+            position: relative;
         }
     </style>
 </head>
@@ -86,19 +57,11 @@
         <h1>Will you be my Valentine?</h1>
         <button class="button yes-button" onclick="acceptValentine()">YES</button>
         <button class="button no-button" id="noButton" onmouseover="moveNoButton()">NO</button>
-
-        <!-- Celebration image to show after YES click -->
-        <img src="https://www.pngkit.com/png/full/7-75947_love-heart-png-pic-love-hearts-clipart-png.png" class="celebration-img" id="celebrationImage" alt="Celebration Heart">
     </div>
 
     <script>
         function acceptValentine() {
-            // Hide the buttons
-            document.querySelector('.container').style.display = 'none';
-            
-            // Show the celebration image
-            const celebrationImage = document.getElementById('celebrationImage');
-            celebrationImage.style.display = 'block';
+            window.location.href = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHNlNm84Z2o2dDU4dnV5cXltaHI5MWowYzRzcWJuOHowYTZzM2xmZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KD1D49tK4Hvl6E5q1T/giphy.gif";
         }
 
         function moveNoButton() {
