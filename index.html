@@ -6,11 +6,12 @@
     <title>Be My Valentine?</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             text-align: center;
-            background-color: #fff0f5;
+            background-color: #ffebee;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         .container {
@@ -23,6 +24,7 @@
             font-size: 3rem;
             color: #e91e63;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .button {
@@ -30,16 +32,17 @@
             padding: 20px 40px;
             margin: 20px;
             border: none;
-            background-color: #e91e63;
+            background-color: #f48fb1;
             color: white;
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s ease;
             position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .button:hover {
-            background-color: #d81b60;
+            background-color: #f06292;
         }
 
         .no-button {
@@ -49,6 +52,16 @@
         .yes-button {
             position: relative;
         }
+
+        .gif-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .gif-container img {
+            max-width: 80%;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -57,13 +70,20 @@
         <h1>Will you be my Valentine?</h1>
         <button class="button yes-button" onclick="acceptValentine()">YES</button>
         <button class="button no-button" id="noButton" onmouseover="moveNoButton()">NO</button>
+
+        <div class="gif-container" id="gifContainer">
+            <img src="https://media.giphy.com/media/26FfZ9m7gHX1ZNO5S/giphy.gif" alt="Silly Dance GIF">
+        </div>
     </div>
 
     <script>
         function acceptValentine() {
-            alert("Yay! You’re my Valentine!");
-            // Optionally, you can redirect to a special page or something
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // Example: Rickroll
+            // Hide the buttons
+            document.querySelector('.container').style.display = 'none';
+            
+            // Show the silly GIF
+            const gifContainer = document.getElementById('gifContainer');
+            gifContainer.style.display = 'block';
         }
 
         function moveNoButton() {
