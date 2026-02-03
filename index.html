@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            top: 30%;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            font-size: 1.5rem;
+            padding: 20px 40px;
+            margin: 20px;
+            border: none;
+            background-color: #e91e63;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .button:hover {
+            background-color: #d81b60;
+        }
+
+        .no-button {
+            position: absolute;
+        }
+
+        .yes-button {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <button class="button yes-button" onclick="acceptValentine()">YES</button>
+        <button class="button no-button" id="noButton" onmouseover="moveNoButton()">NO</button>
+    </div>
+
+    <script>
+        function acceptValentine() {
+            alert("Yay! You’re my Valentine!");
+            // Optionally, you can redirect to a special page or something
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // Example: Rickroll
+        }
+
+        function moveNoButton() {
+            // Get the button and the window dimensions
+            const noButton = document.getElementById('noButton');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Generate random position for "NO" button within window boundaries
+            const randomX = Math.floor(Math.random() * (windowWidth - noButton.offsetWidth));
+            const randomY = Math.floor(Math.random() * (windowHeight - noButton.offsetHeight));
+
+            // Apply the new position to the button
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+    </script>
+
+</body>
+</html>
